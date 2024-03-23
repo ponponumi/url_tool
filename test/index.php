@@ -14,6 +14,12 @@ var_dump($host);
 var_dump($in);
 var_dump($ex);
 
+$in = Domain::internalLinkCheck($url,"http://example.com"); // falseが返れば成功
+$ex = Domain::externalLinkCheck($url,"http://example.com"); // trueが返れば成功
+
+var_dump($in);
+var_dump($ex);
+
 $url = "https://example.com";
 $host = Domain::hostGet($url);
 
