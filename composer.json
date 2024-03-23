@@ -1,0 +1,17 @@
+{
+    "name": "ponponumi/url_tool",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ponponumi\\UrlTool\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ponponumi",
+            "email": "ponponumi@gmail.com"
+        }
+    ],
+    "require": {}
+}
