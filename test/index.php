@@ -7,4 +7,9 @@ use Ponponumi\UrlTool\Domain;
 $url = "http://localhost:2250/hello.php";
 $host = Domain::hostGet($url);
 
+$in = Domain::internalLinkCheck($url); // trueが返れば成功
+$ex = Domain::externalLinkCheck($url); // falseが返れば成功
+
 var_dump($host);
+var_dump($in);
+var_dump($ex);
