@@ -40,4 +40,11 @@ class Domain{
       return false;
     }
   }
+
+  public static function externalLinkCheck(string $url,string $internal_link=""){
+    // 外部リンクかどうかを判定する
+    // 外部リンクならtrue、内部リンクならfalseを返す
+    $result = self::internalLinkCheck($url,$internal_link);
+    return !$result;
+  }
 }
