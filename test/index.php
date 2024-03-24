@@ -35,3 +35,23 @@ $ex = Domain::externalLinkCheck($url); // trueが返れば成功
 var_dump($host);
 var_dump($in);
 var_dump($ex);
+
+$url = "example.com";
+$host = Domain::hostGet($url);
+var_dump($host);
+
+$url = "localhost";
+$host = Domain::hostGet($url);
+var_dump($host);
+
+$url = "http://localhost";
+$host = Domain::hostGet($url);
+var_dump($host);
+
+$url = "localhost:8080";
+$host = Domain::hostGet($url);
+var_dump($host);
+
+$url = "http://localhost:8080";
+$host = Domain::hostGet($url);
+var_dump($host);
