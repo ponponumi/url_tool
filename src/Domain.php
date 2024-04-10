@@ -34,7 +34,7 @@ class Domain{
       $internal_host = self::hostGet($internal_link);
     }else{
       // 内部のURLがなければ
-      $internal_host = $_SERVER["HTTP_HOST"];
+      $internal_host = self::httpHostGet();
     }
 
     if($internal_host === $url_host){
@@ -51,5 +51,59 @@ class Domain{
     // 外部リンクならtrue、内部リンクならfalseを返す
     $result = self::internalLinkCheck($url,$internal_link);
     return !$result;
+  }
+
+  public static function httpHostGet(){
+    // HTTPホストを取得する
+    return $_SERVER["HTTP_HOST"];
+  }
+
+  public static function sslCheck(){
+    // SSLかどうか確認する
+    $result = false;
+
+    if(array_key_exists('HTTPS',$_SERVER)){
+      if($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1){
+        $result = true;
+      }
+    }
+
+    return $result;
+  }
+
+  public static function topPageUrlGet(){
+    // トップページのURLを取得する
+    $url = "";
+    $ssl = self::sslCheck();
+
+    if($ssl){
+      $url = "https://";
+    }else{
+      $url = "http://";
+    }
+
+    $host = self::httpHostGet();
+
+    $url .= $host;
+    $url .= '/';
+
+    return $url;
+  }
+
+  public static function pageUrlGet(string $pageUrl=""){
+    // ページのURLを取得する
+    $url = self::topPageUrlGet();
+
+    if($pageUrl !== ""){
+      $pageUrlFirst = mb_substr($pageUrl, 0, 1);
+
+      if($pageUrlFirst === '/'){
+        $pageUrl = mb_substr($pageUrl, 1);
+      }
+
+      $url .= $pageUrl;
+    }
+
+    return $url;
   }
 }
