@@ -89,4 +89,19 @@ class Domain{
 
     return $url;
   }
+
+  public static function pageUrlGet(string $pageUrl){
+    // ページのURLを取得する
+    $url = self::topPageUrlGet();
+
+    $pageUrlFirst = mb_substr($pageUrl, 0, 1);
+
+    if($pageUrlFirst === '/'){
+      $pageUrl = mb_substr($pageUrl, 1);
+    }
+
+    $url .= $pageUrl;
+
+    return $url;
+  }
 }
