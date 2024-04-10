@@ -52,4 +52,9 @@ class Domain{
     $result = self::internalLinkCheck($url,$internal_link);
     return !$result;
   }
+
+  public static function httpHostGet(){
+    // HTTPホストを取得する
+    return $_SERVER["HTTP_HOST"];
+  }
 }
