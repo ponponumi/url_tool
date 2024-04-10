@@ -70,4 +70,23 @@ class Domain{
 
     return $result;
   }
+
+  public static function topPageUrlGet(){
+    // トップページのURLを取得する
+    $url = "";
+    $ssl = self::sslCheck();
+
+    if($ssl){
+      $url = "https://";
+    }else{
+      $url = "http://";
+    }
+
+    $host = self::httpHostGet();
+
+    $url .= $host;
+    $url .= '/';
+
+    return $url;
+  }
 }
