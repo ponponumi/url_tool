@@ -57,4 +57,17 @@ class Domain{
     // HTTPホストを取得する
     return $_SERVER["HTTP_HOST"];
   }
+
+  public static function sslCheck(){
+    // SSLかどうか確認する
+    $result = false;
+
+    if(array_key_exists('HTTPS',$_SERVER)){
+      if($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1){
+        $result = true;
+      }
+    }
+
+    return $result;
+  }
 }
