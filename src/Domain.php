@@ -34,7 +34,7 @@ class Domain{
       $internal_host = self::hostGet($internal_link);
     }else{
       // 内部のURLがなければ
-      $internal_host = $_SERVER["HTTP_HOST"];
+      $internal_host = self::httpHostGet();
     }
 
     if($internal_host === $url_host){
