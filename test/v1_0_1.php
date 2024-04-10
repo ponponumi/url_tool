@@ -6,3 +6,4 @@ use Ponponumi\UrlTool\Domain;
 
 var_dump(Domain::httpHostGet());
 var_dump(Domain::sslCheck());
+var_dump(Domain::topPageUrlGet());
